@@ -1,0 +1,105 @@
+			CURSO BOOSTER DIA 1
+
+INSTALANDO CHOCOLATEY
+	Ele é o package manager para instalar o node.js e o npm
+	Abrir Powershell como administrador
+	Seguir esse tutotial: https://chocolatey.org/install
+
+INSTALANDO NODE.js (versão LTS)
+	//Digitar "cinst" ou "choco install" é a mesma coisa
+	cinst nodejs-lts
+	//Você pode precisr usar o "cinst nodejs-lts --force" caso trenha algum problema
+	//Fechar e abrir o powershell como administrador novamente (para ele já abrir com o node instalado)
+
+O QUE É O NPM?
+	É uma forma de instalar dependências/pacotes de terceiros
+	No PHP tem o Composer
+	No Phyton tem o Pip
+	No Ruby tem as Ruby Gems
+	No Node tem o NPM
+
+INSTALAR VSCODE
+	Normalmente pelo instalador do site mesmo
+
+SOFTWARE PARA CRIAR FLUXOGRAMAS
+	//Usado durante a Rocketseat
+	https://whimsical.com/
+	//Software que eu já conhecia
+	https://miro.com/app/dashboard/
+
+POR QUE VAMOS CRIAR UMA API RESTful
+	O REST é uma padronização que será seguida. Por isso a API é RESTful
+	Ao invés do BACKEND retornar todo o HTML juto com os dados (modelo MVC), ele retornará só os dados em JSON (padrão REST). Assim os dados serão utilizados tanto no Front-end em ReactJS para o site, como também no Front-end em React Native para a Aplicação Mobile.
+	
+DENTRO DA PASTA DO PROJETO CRIAR UMA PASTA "server"
+	Dentro da server dar o comando "npm init -y"
+	O parâmetro -y serve para o npm não fazer as perguntar sobre nome do projeto, etc... Definir tudo como padrão.
+	Gera o package.json //Arquivo onde vão ficar várias informações de versões das dependências do projeto, etc
+
+INSTALAR EXPRESS
+	npm install express
+	É um microframework pra lidarmos com rotas
+	Gera o node_modules //código das depências que instalamos
+	Gera o package-lock-json //Arquivo que não vamos precisar mexer
+
+DEFINIÇÃO DE TIPOS DAS BIBLIOTECAS
+	Como estamos usando typescript as bibliotecas precisam vir com definições de tipos. 
+	Algumas bibliotecas já vem com a definição de tipos instalada, mas outras não. Nesse caso, teremos que instalá-las manualmente.
+	O vscode já avisa (aparecendo 3 pontinhos abaixo do comando dado) que a definição de tipos precisa ser instalada (e ensina como instalar)
+	npm install @types/express -D // O parâmetro -D é para instalar como devDependencie
+
+INSTALANDO PACOTE PARA O NODE ENTENDER typescript
+	npm install ts-node -D
+	npm install typescript -D //Instalando typescript dentro da máquina
+
+CRIANDO ARQUIVO DE CONFIGURAÇÃO DO typescript
+	//define quais features nós queremos usar e quais não queremos
+	npx tsc --init
+
+RODAR APLICAÇÃO
+	npx ts-node src/server.ts
+	//Após esse comando o terminal ficará rodando sem dar nenhuma mensagem
+	//Após fazer alterações no código o servidor tem que ser reiniciado
+
+EXTENSION GOOGLE CHROME
+	JSON VIEWER : serve pra ver o JSON dentro do "localhost:3333/users" de uma forma mais bonitinha
+	//Tem tema drácula
+
+ATUALIZAR A APLICAÇÃO SEM PRECISAR CANCELAR E EXECUTAR O NPX TODA VEZ
+	npm install ts-node-dev -D	//Para instalar
+	npx ts-node-dev src/server.ts	//Para executar
+	//Indo dentro do arquivo package.json podemos criar um script para trocar esse comando grande por um comando menor. Com o script "dev": "ts-node-dev src/server.ts" agora só precisamos digitar "npm run dev"
+
+O que é React?
+	É uma biblioteca (ou framework) para construção de interfaces
+	Utilizado para construção de SPA (Single-Page Applications) - Quando altera de rota dentro da aplicação e não precisa ter um recarregamento completo da tela. Grande parte do código é compartilhado.
+	Tudo fica dentro do Javascript
+	O React é compartilhado em aplicações web com ReactJS e em aplicações mobile com o React Native
+	Em cada uma dessa interfaces tem um pacote que integra o React. Na web as interfaces são criadas usando React com HTML e no mobile a interface é construída com os elementos nativos do JAVA, ANDROID, OBJECT C, ...
+	Vantagens: Organização do código (componentização), Divisão de responsabilidades(backend: regra de negócio, front-end: interface), uma API só para múltiplos clientes
+
+COMEÇANDO PROJETO COM REACT
+	Indo na pasta das aulas (FORA DA PASTA SERVER)
+	npx create-react-app web --template=typescript //"web" é o nome do projeto e "--template=typescript" é para o projeto já vir com as configurações do typescript
+	A pasta web foi criada dentro da pasta "aulas" (onde está a pasta server tbm)
+
+ABRINDO PROJETO REACT
+	npm start //dentro da pasta "web" onde o projeto está
+	//Edite o arquivo src/App.tsc e salve para fazer o reload
+
+COMO FUNCIONA A ABORDAGEM DO REACT
+	Abordagem Tradicional:
+		iOS: Objective-C, Swift => .ipa
+		Androud: Java, Kotlin => .apk
+
+	Abordagem React Native
+		Código não é convertido para linguagem nativa
+		Única base de código que passa a ser entendido pelo dispositivo móvel (Android ou iOS) usando uma dependência que adiciona uma thread de interpretação de código JavaScript dentro do dispositivo
+
+POR QUE USAMOS EXPO?
+	Quando desenvolvemos para dispositivos móveis (seja Android ou iOS) precisamos de um ambiente configurado na máquina
+		Androi: SDK (Software Development Kit) que vem com o Android Studio (IDE completa muito pesada)
+		iOS: Xcode (IDE completa muito pesada)
+	Toda vez que precisarmos de uma biblioteca de câmera, geolocalização, sensores do celular, ou qualquer outro recurso nativo teríamos que procurar uma biblioteca na internet.
+		Teríramos que instalar o Android Studio e o Xcode se não tivéssemos o code.
+		A gente instala no celular um aplicativo chamado EXPO que encapsula a parte nativa do Android e do iOS e dentro dele tudo que precisamos para desenvolver no React Native já está instalado (as bibliotecas de câmera, geolocalização, etc...)
